@@ -15,3 +15,66 @@
          <b>{{estado.clave}}</b>
       </li>
 </ul>
+<p *ngIf="estados.length > 3">¡Son muchos estados! ({{estados.length}})</p>
+
+<p [hidden]="!visible">Adiós</p>
+
+<form>
+    <label>¿Cómo te llamas?</label>
+
+
+    <!--Expresiones-->
+    <p>Soy capaz de multiplicar por {{7 * 26}} tus habilidades</p>
+    <!--Eventos-->
+    <a (click)="visible=true">Saludar</a>
+    <!--Propiedades-->
+    <p [hidden]="!visible">Hola Mundo!!!</p>
+</form>
+
+
+  <ul>
+    <li><a (click)="nom0=true; nom1=false;  nom2=false; nom3=false;">{{estados[0].clave}}</a></li>
+    <li><a (click)="nom0=false; nom1=true; nom2=false; nom3=false;">{{estados[1].clave}}</a></li>
+    <li><a (click)="nom0=false; nom1=false; nom2=true; nom3=false;">{{estados[2].clave}}</a></li>
+    <li><a (click)="nom0=false; nom1=false; nom2=false; nom3=true;">{{estados[3].clave}} </a></li>
+  </ul>
+  
+  <p [hidden] ="!nom0">{{estados[0].nombre}}</p>
+  <p [hidden] ="!nom1">{{estados[1].nombre}}</p>
+  <p [hidden] ="!nom2">{{estados[2].nombre}}</p>
+  <p [hidden] ="!nom3">{{estados[3].nombre}}</p>
+
+  <div class="container">
+    <input [(ngModel)]='name'/>
+    <br/>
+    <h1> Hello {{name}}</h1>
+  </div>
+
+  <h5>Listado</h5>
+  <div style="float:left;padding:10px;margin:0 auto;" *ngIf="estados">
+    <select [(ngModel)] ="selected">
+      <option *ngFor="let est of estados" [(ngValue)]="est.clave">{{est.nombre}}</option>
+    </select>
+    <p>{{selected}}</p>
+  </div>
+
+  <a (click)="mostrar()">{{leyenda}}</a>
+
+  <h3>Operaciones Básicas</h3>
+    <div class="container">
+      <br/>
+      <h3>Número 1
+          <input [(ngModel)]='num1'/>
+      </h3>
+      <h3>Número 2
+          <input [(ngModel)]='num2'/>
+      </h3>
+      
+      <h4>Suma = {{num1 *1 + num2 *1}}</h4>
+      <h4>Resta = {{num1  - num2}}</h4>
+      <h4>Multiplicación = {{num1  * num2}}</h4>
+      <h4>División = {{num1  / num2}}</h4>
+
+      <br/>
+      
+    </div>
